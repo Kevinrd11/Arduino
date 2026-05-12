@@ -1,0 +1,2 @@
+# No runtime dependencies are required; the server uses the Python standard library.
+pytest==8.2.2

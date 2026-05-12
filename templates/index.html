@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Panel Arduino JSON</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Proyecto universitario · Arduino + Python + JSON</p>
+          <h1 id="page-title">Panel de monitoreo de sensores</h1>
+          <p class="hero-copy">
+            Interfaz minimalista para visualizar datos simulados mientras se configura la conexión real del Arduino.
+          </p>
+        </div>
+        <div class="status-card" aria-live="polite">
+          <span class="pulse"></span>
+          <div>
+            <strong id="connection-mode">Cargando estado...</strong>
+            <p id="connection-message">Preparando API de simulación.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="Controles del tablero">
+        <button class="tab active" type="button" data-view="single">Dato uno a uno</button>
+        <button class="tab" type="button" data-view="all">Todos los datos</button>
+        <button id="refresh-button" class="secondary-button" type="button">Actualizar ahora</button>
+      </section>
+
+      <section id="single-view" class="panel active" aria-labelledby="single-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Lectura actual</p>
+            <h2 id="single-title">Vista individual por sensor</h2>
+          </div>
+          <p class="timestamp">Última lectura: <span id="last-updated">--</span></p>
+        </div>
+        <div id="sensor-cards" class="cards" aria-live="polite"></div>
+      </section>
+
+      <section id="all-view" class="panel" aria-labelledby="all-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Historial reciente</p>
+            <h2 id="all-title">Todos los datos al mismo tiempo</h2>
+          </div>
+          <p class="timestamp">Se conservan las últimas 40 lecturas simuladas.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Hora</th>
+                <th>Temp. °C</th>
+                <th>Humedad %</th>
+                <th>Luz lux</th>
+                <th>Gas ppm</th>
+                <th>Distancia cm</th>
+                <th>Movimiento</th>
+              </tr>
+            </thead>
+            <tbody id="readings-table"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
